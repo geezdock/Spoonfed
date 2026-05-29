@@ -1,73 +1,73 @@
-# React + TypeScript + Vite
+# Spoonfed — OurEats
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A small identity-first restaurant journal built with React, TypeScript, Vite and Leaflet.
 
-Currently, two official plugins are available:
+This repository contains the OurEats / Spoonfed client app used to capture short restaurant recommendations, pin them on a map, and browse a lightweight feed. The app is intentionally minimal and works entirely in the browser using localStorage for persistence and the Nominatim (OpenStreetMap) geocoding service for coordinates.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Key features
 
-## React Compiler
+- Identity-first flow: choose a persona on first open (sessionStorage), then use the app as that user.
+- Feed + Map: toggle between a feed of saved restaurant cards and a Leaflet map with pins for geocoded entries.
+- Add spots: save restaurants with short recommendations, optional vibe/price/tags, and the app will geocode the provided location.
+- Backfill: older saved cards without coordinates are geocoded on first load so they appear on the map.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Tech stack
 
-## Expanding the ESLint configuration
+- Vite + React + TypeScript
+- Tailwind CSS for styling
+- Leaflet + react-leaflet for maps
+- Nominatim (OpenStreetMap) for geocoding
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Quick start
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1. Install dependencies
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```powershell
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Run the dev server
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```powershell
+npm run dev
 ```
+
+Open http://127.0.0.1:5173/ in your browser.
+
+Build for production
+
+```powershell
+npm run build
+```
+
+Lint
+
+```powershell
+npm run lint
+```
+
+Configuration notes
+
+- There are no server components in this repo; everything runs client-side.
+- Geocoding uses Nominatim. If you run this app heavily or in production, please follow the Nominatim usage policy and consider providing your own geocoding endpoint or a paid service.
+
+Files of interest
+
+- `src/App.tsx` — top-level routing and view state
+- `src/components/MapView.tsx` — the Leaflet map and pin rendering
+- `src/components/FeedView.tsx` — feed + filter UI
+- `src/hooks/useRestaurants.ts` — persistence and coordinate backfill
+- `src/utils/geocodeLocation.ts` — shared Nominatim helper
+
+Contributing
+
+Contributions are welcome. Open an issue or submit a pull request with a clear summary of changes. Keep changes focused to a single concern per PR.
+
+License
+
+This repository does not contain an explicit license file. If you intend to publish or share this project publicly, add a `LICENSE` file (for example, MIT) to make the terms explicit.
+
+Support / contact
+
+For questions about this project, open an issue on the repository.
+
