@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap');
+@import 'tailwindcss';
+
+:root {
+  --cream: #f5f0e8;
+  --ink: #1a1a1a;
+  --muted: #888888;
+  --sans: 'DM Sans', sans-serif;
+  --heading: 'Fraunces', serif;
+  font-family: var(--sans);
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(233, 69, 96, 0.08), transparent 30%),
+    radial-gradient(circle at top right, rgba(245, 166, 35, 0.1), transparent 24%),
+    linear-gradient(180deg, #faf6ef 0%, #f5f0e8 100%);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  background: inherit;
+  color: var(--ink);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  font-family: var(--sans);
+}
+
+.leaflet-pane,
+.leaflet-top,
+.leaflet-bottom {
+  z-index: 400;
+}
+
+.leaflet-popup-pane {
+  z-index: 700;
+}
+
+.spoonfed-map-popup .leaflet-popup-content-wrapper {
+  border-radius: 18px;
+  padding: 0;
+  overflow: hidden;
+  box-shadow: 0 18px 50px rgba(26, 26, 26, 0.18);
+}
+
+.spoonfed-map-popup .leaflet-popup-content {
+  margin: 0;
+  width: auto !important;
+}
+
+.spoonfed-map-popup .leaflet-popup-tip {
+  background: #ffffff;
+}
+
+.font-display {
+  font-family: var(--heading);
+}
+
+@layer utilities {
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(22px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.3s ease both;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.25s ease both;
+  }
+}
