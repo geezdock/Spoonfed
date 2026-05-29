@@ -36,13 +36,7 @@ export function Feed({ cards, loading, hasAnyCards, onAddFirstSpot }: FeedProps)
         ))}
       </div>
 
-      {cards.length === 1 ? (
-        <div className="flex justify-center pt-2">
-          <div className="rounded-full border border-dashed border-black/10 bg-white/50 px-4 py-2 text-sm text-[#8f8f8f]">
-            Add more spots 👇
-          </div>
-        </div>
-      ) : null}
+      {/* Removed the 'Add more spots' prompt per UX request */}
     </div>
   )
 }
