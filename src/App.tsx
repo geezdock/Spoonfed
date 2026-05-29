@@ -13,7 +13,7 @@ import type { Friend, RestaurantCard } from './types'
 
 function App() {
   const { cards, loading, addCard } = useRestaurants()
-  const { identity: activeUser, setIdentity } = useIdentity()
+  const { identity: activeUser, setIdentity, clearIdentity } = useIdentity()
   const [landingSelection, setLandingSelection] = useState<Friend | null>(null)
   const [activeView, setActiveView] = useState<'map' | 'feed'>('map')
   const [search, setSearch] = useState('')
@@ -113,7 +113,7 @@ function App() {
 
   return (
     <div className="flex min-h-screen flex-col transition-colors duration-400" style={appStyle}>
-      <Header activeUser={activeUser} onAddSpot={() => setShowForm(true)} />
+      <Header activeUser={activeUser} onAddSpot={() => setShowForm(true)} onSwitchPersona={() => clearIdentity()} />
 
       <div className="sticky top-[72px] z-20 bg-[rgba(245,240,232,0.85)] px-4 py-3 backdrop-blur-md sm:px-6 lg:px-8">
         <div className="mx-auto flex w-full max-w-7xl justify-center">
