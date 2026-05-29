@@ -58,11 +58,13 @@ button {
 .leaflet-pane,
 .leaflet-top,
 .leaflet-bottom {
-  z-index: 400;
+  /* keep the map panes below UI overlays (modal uses z-40) */
+  z-index: 10;
 }
 
 .leaflet-popup-pane {
-  z-index: 700;
+  /* popups should sit above the map but below modals/overlays */
+  z-index: 30;
 }
 
 .spoonfed-map-popup .leaflet-popup-content-wrapper {
